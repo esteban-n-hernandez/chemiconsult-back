@@ -9,5 +9,11 @@ public class FormTO {
 
     public String name;
 
-    public String value;
+    public Double value;
+
+
+    public FormTO(String name, Double value) {
+        this.name = name;
+        this.value = value;
+    }
 }

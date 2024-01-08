@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -20,7 +22,7 @@ public class FormController implements IFormController {
         System.out.println("FORM CREATED");
         System.out.println("Nombre: " + form.getName());
         System.out.println("Valor: " + form.getValue());
-        if (formService.insert()) {
+        if (formService.insert(form)) {
             return ResponseEntity.ok("FORMULARIO GENERADO CORRECTAMENTE");
         } else {
             return ResponseEntity.internalServerError().body("HUBO UN ERROR AL REGISTRAR EL FORMULARIO");
@@ -41,8 +43,8 @@ public class FormController implements IFormController {
 
     @Override
     @GetMapping("/get-forms")
-    public void getForms() {
-        System.out.println("LIST FORM OBTAINED");
+    public List<FormTO> getForms() {
+        return formService.getAll();
     }
 
     @Override
