@@ -1,7 +1,8 @@
 package org.chemiconsult.api.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.chemiconsult.api.controller.inter.IFormController;
-import org.chemiconsult.api.controller.to.FormTO;
+import org.chemiconsult.api.controller.to.FormRequest;
 import org.chemiconsult.api.service.FormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +13,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Log4j2
 public class FormController implements IFormController {
 
     FormService formService;
 
     @Override
     @PostMapping("/create-form")
-    public ResponseEntity createForm(FormTO form) {
-        System.out.println("FORM CREATED");
-        System.out.println("Nombre: " + form.getName());
-        System.out.println("Valor: " + form.getValue());
+    public ResponseEntity createForm(FormRequest form) {
+        log.info("FORM CREATED");
+        log.info("Nombre: " + form.getName());
+        log.info("Valor: " + form.getValue());
         if (formService.insert(form)) {
             return ResponseEntity.ok("FORMULARIO GENERADO CORRECTAMENTE");
         } else {
@@ -32,32 +34,24 @@ public class FormController implements IFormController {
     @Override
     @DeleteMapping("/delete-form")
     public void deleteForm() {
-        System.out.println("FORM DELETED");
+        log.info("FORM DELETED");
     }
 
     @Override
     @PutMapping("/update-form")
     public void updateForm() {
-        System.out.println("FORM UPDATED");
+        log.info("FORM UPDATED");
+    }
+
+    @GetMapping("/get-forms")
+    public ResponseEntity<List<FormRequest>> getForms() {
+        List<FormRequest> formTOList = formService.getAll();
+        return ResponseEntity.ok().body(formTOList);
     }
 
     @Override
-    public ResponseEntity getForms() {
-
-        List<FormTO> formTOList = formService.getAll();
-
-        formTOList.forEach(formTO -> {
-            String name = formTO.getName();
-            System.out.println("Name: " + name);
-        });
-
-        return ResponseEntity.ok().body("Resultados ok");
-    }
-
-    @Override
-    @GetMapping("/get-form/{id}")
-    public void getForm() {
-        System.out.println("FORM OBTAINED");
+    public ResponseEntity getFormByID(FormRequest req) {
+        return ResponseEntity.ok().body(formService.getById(req.getId()));
     }
 
 

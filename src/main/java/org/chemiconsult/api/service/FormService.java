@@ -1,7 +1,7 @@
 package org.chemiconsult.api.service;
 
 import org.chemiconsult.api.controller.de.FormDE;
-import org.chemiconsult.api.controller.to.FormTO;
+import org.chemiconsult.api.controller.to.FormRequest;
 import org.chemiconsult.api.repository.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class FormService {
 
     FormRepository formRepository;
 
-    public boolean insert(FormTO formTO) {
+    public boolean insert(FormRequest formTO) {
         FormDE de = new FormDE();
 
         de.setId(1);
@@ -25,15 +25,20 @@ public class FormService {
     }
 
 
-    public List<FormTO> getAll() {
+    public List<FormRequest> getAll() {
         return formRepository.findAll().stream()
                 .map(this::convertirFormDEaFormTO)
                 .collect(Collectors.toList());
     }
 
-    private FormTO convertirFormDEaFormTO(FormDE formDE) {
-        return new FormTO(formDE.getName(), formDE.getValue());
+    public FormRequest getById(int id) {
+        return convertirFormDEaFormTO(formRepository.findById(id));
     }
+
+    private FormRequest convertirFormDEaFormTO(FormDE formDE) {
+        return new FormRequest(formDE.getId(), formDE.getName(), formDE.getValue());
+    }
+
 
     @Autowired
     public FormService(FormRepository formRepository) {

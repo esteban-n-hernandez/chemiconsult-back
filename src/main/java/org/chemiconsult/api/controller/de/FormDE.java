@@ -7,10 +7,13 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "FormDE")
 public class FormDE {
 
     @Id
@@ -19,7 +22,7 @@ public class FormDE {
     @Column(name = "NAME", length = 50)
     private String name;
 
-    @Column(name = "VALUE", length = 50)
-    private Double value;
+    @Column(name = "VALUE", precision = 10, scale = 2)
+    private BigDecimal value;
 
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FormRepository extends JpaRepository<FormDE, In> {
 
-
+    FormDE findById(int id);
 }
