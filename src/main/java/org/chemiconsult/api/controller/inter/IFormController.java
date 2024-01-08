@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiResponses;
 import org.chemiconsult.api.controller.to.FormTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -25,14 +26,23 @@ public interface IFormController {
     })
     @PostMapping(value = "/create-form", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity createForm(@RequestBody FormTO form) throws Exception;
+    ResponseEntity createForm(@RequestBody FormTO form) throws Exception;
 
-    public void deleteForm();
+    void deleteForm();
 
-    public void updateForm();
+    void updateForm();
 
-    public List<FormTO> getForms();
+    @ApiOperation(value = "Get forms information from database.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Forms obtained."),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Authentication Error"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+    @GetMapping(value = "/get-forms", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity getForms();
 
-    public void getForm();
+    void getForm();
 
 }

@@ -42,9 +42,16 @@ public class FormController implements IFormController {
     }
 
     @Override
-    @GetMapping("/get-forms")
-    public List<FormTO> getForms() {
-        return formService.getAll();
+    public ResponseEntity getForms() {
+
+        List<FormTO> formTOList = formService.getAll();
+
+        formTOList.forEach(formTO -> {
+            String name = formTO.getName();
+            System.out.println("Name: " + name);
+        });
+
+        return ResponseEntity.ok().body("Resultados ok");
     }
 
     @Override
