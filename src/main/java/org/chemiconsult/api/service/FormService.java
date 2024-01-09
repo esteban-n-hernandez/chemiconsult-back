@@ -1,42 +1,48 @@
 package org.chemiconsult.api.service;
 
-import org.chemiconsult.api.controller.de.FormDE;
+import lombok.extern.log4j.Log4j2;
+import org.chemiconsult.api.controller.de.ResultDE;
 import org.chemiconsult.api.controller.to.FormRequest;
+import org.chemiconsult.api.controller.to.ResultTO;
 import org.chemiconsult.api.repository.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@Log4j2
 public class FormService {
 
     FormRepository formRepository;
 
-    public boolean insert(FormRequest formTO) {
-        FormDE de = new FormDE();
-
-        de.setId(1);
-        de.setName(formTO.getName());
-        de.setValue(formTO.getValue());
-        formRepository.save(de);
-        return true;
+    public void saveResult(ResultTO resultTo) {
+        try {
+            ResultDE resultDE = mapResultToDe(resultTo);
+            formRepository.save(resultDE);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
 
     public List<FormRequest> getAll() {
-        return formRepository.findAll().stream()
-                .map(this::convertirFormDEaFormTO)
-                .collect(Collectors.toList());
+        return null;
     }
 
     public FormRequest getById(int id) {
-        return convertirFormDEaFormTO(formRepository.findById(id));
+        return null;
+        //return formRepository.findById(id);
     }
 
-    private FormRequest convertirFormDEaFormTO(FormDE formDE) {
-        return new FormRequest(formDE.getId(), formDE.getName(), formDE.getValue());
+    private ResultDE mapResultToDe(ResultTO resultTo) {
+        return ResultDE.builder()
+                .analysisProtocol(resultTo.getAnalysisProtocol())
+                .sampleType(resultTo.getSampleType())
+                .unidad(resultTo.getUnidad())
+                .sampleId(resultTo.getSampleId())
+                .methodology(resultTo.getMethodology())
+                .build();
     }
 
 

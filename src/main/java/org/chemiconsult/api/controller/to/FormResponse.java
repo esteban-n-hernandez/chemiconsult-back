@@ -3,14 +3,14 @@ package org.chemiconsult.api.controller.to;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
-public class FormRequest {
+public class FormResponse {
 
-    //MUestra
+    //Muestra
     public String sample;
 
     //Numero de Informe
@@ -19,9 +19,12 @@ public class FormRequest {
     //Fecha de recepcion de muestra
     public LocalDate sampleReceptionDate;
 
-    public FormRequest(String sample, Integer formNumbre, LocalDate sampleReceptionDate) {
+    private List<DeterminationTO> determinationList;
+
+    public FormResponse(String sample, Integer formNumbre, LocalDate sampleReceptionDate, List<DeterminationTO> determinationList) {
         this.sample = sample;
         this.formNumber = formNumbre;
         this.sampleReceptionDate = sampleReceptionDate;
+        this.determinationList = determinationList;
     }
 }
