@@ -1,9 +1,9 @@
 package org.chemiconsult.api.service;
 
 import lombok.extern.log4j.Log4j2;
-import org.chemiconsult.api.controller.de.ResultDE;
-import org.chemiconsult.api.controller.to.FormRequest;
-import org.chemiconsult.api.controller.to.ResultTO;
+import org.chemiconsult.api.form.controller.de.ResultDE;
+import org.chemiconsult.api.form.controller.to.FormRequest;
+import org.chemiconsult.api.form.controller.to.ResultTO;
 import org.chemiconsult.api.repository.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
