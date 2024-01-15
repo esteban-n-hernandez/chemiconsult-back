@@ -27,8 +27,12 @@ public class CustomerService {
         customerRepository.delete(CustomerMapper.CustomerTOToCUstomerDE(customerTO));
     }
 
-    public List<CustomerTO> getAllCustomers() {
-        return CustomerMapper.CustomerDEListToCustomerToList(customerRepository.findAll());
+    public List<CustomerTO> getAllCustomers() throws Exception {
+        try {
+            return CustomerMapper.CustomerDEListToCustomerToList(customerRepository.findAll());
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     public CustomerTO getCustomer(Integer documentNumber) {
