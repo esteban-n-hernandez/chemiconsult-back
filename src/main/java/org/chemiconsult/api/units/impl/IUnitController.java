@@ -19,9 +19,9 @@ public interface IUnitController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity createUnit(UnitTO unit);
+    ResponseEntity createUnit(@RequestBody UnitTO unit);
 
 
     @ApiOperation(value = "Post form information into database.")
@@ -33,7 +33,7 @@ public interface IUnitController {
     })
     @DeleteMapping(value = "/delete", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity deleteUnit(UnitTO unit);
+    ResponseEntity deleteUnit(@PathVariable Integer id);
 
     @ApiOperation(value = "Post form information into database.")
     @ApiResponses(value = {
@@ -66,6 +66,6 @@ public interface IUnitController {
     })
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity getUnit(Integer unitId);
+    ResponseEntity getUnit(@PathVariable Integer id);
 
 }

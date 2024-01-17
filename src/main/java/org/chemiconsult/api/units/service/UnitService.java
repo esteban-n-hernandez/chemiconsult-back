@@ -1,5 +1,6 @@
 package org.chemiconsult.api.units.service;
 
+import org.chemiconsult.api.units.de.UnitDE;
 import org.chemiconsult.api.units.mapper.UnitMapper;
 import org.chemiconsult.api.units.repository.UnitRepository;
 import org.chemiconsult.api.units.to.UnitTO;
@@ -14,23 +15,39 @@ public class UnitService {
     @Autowired
     UnitRepository unitRepository;
 
-    public void create(UnitTO unitTO) {
-
+    public void create(UnitTO unitTO) throws Exception {
+        try {
+            unitRepository.save(UnitMapper.UnitTOToUnitDE(unitTO));
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     public void update(UnitTO unitTO) {
+        try {
+            unitRepository.save(UnitMapper.UnitTOToUnitDE(unitTO));
+        } catch (Exception e) {
 
+        }
     }
 
 
     public void delete(UnitTO unitTO) {
+        try {
+            unitRepository.save(UnitMapper.UnitTOToUnitDE(unitTO));
+        } catch (Exception e) {
+
+        }
     }
 
     public List<UnitTO> getAllCustomers() {
+
         return null;
     }
 
-    public UnitTO getCustomer(Integer documentNumber) {
+    public UnitTO getUnitByID(Integer documentNumber) {
         return null;
     }
+
+
 }

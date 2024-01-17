@@ -15,31 +15,62 @@ import java.util.List;
 @RequestMapping("/api/unit")
 public class UnitController implements IUnitController {
 
-    @Autowired
+
     UnitService unitService;
 
     @Override
     public ResponseEntity createUnit(UnitTO unit) {
-        return null;
+        try {
+            unitService.create(unit);
+            return ResponseEntity.ok().body("Unidad guardada");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+        }
     }
 
     @Override
-    public ResponseEntity deleteUnit(UnitTO unit) {
+    public ResponseEntity deleteUnit(Integer id) {
+        try {
+
+        } catch (Exception e) {
+
+        }
         return null;
     }
 
     @Override
     public ResponseEntity updateUnit(UnitTO unit) {
+        try {
+
+        } catch (Exception e) {
+
+        }
         return null;
     }
 
     @Override
     public ResponseEntity getAllUnit() {
+        try {
+
+        } catch (Exception e) {
+
+        }
         return null;
     }
 
     @Override
-    public ResponseEntity getUnit(Integer unitId) {
-        return null;
+    public ResponseEntity getUnit(Integer id) {
+        try {
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
+
+    @Autowired
+    public UnitController(UnitService unitService) {
+        this.unitService = unitService;
+    }
+
 }
