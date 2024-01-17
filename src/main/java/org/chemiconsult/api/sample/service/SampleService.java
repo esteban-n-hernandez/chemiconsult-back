@@ -19,7 +19,8 @@ public class SampleService {
     public void create(SampleTO sampleTO) throws Exception {
         log.info("INSERTANDO MUESTRA");
         try {
-            sampleRepository.save(new SampleDE());
+            //    sampleRepository.save(new SampleDE());
+            log.info("MUESTRA INSERTADA");
         } catch (Exception e) {
             throw new Exception(e.getCause());
         }
