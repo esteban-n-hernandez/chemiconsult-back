@@ -45,7 +45,13 @@ public class SampleController implements ISampleController {
     }
 
     @Override
-    public ResponseEntity getSampleByID(Integer sampleID) {
-        return null;
+    public ResponseEntity getSampleByID(Integer id) {
+        try {
+            sampleService.getSampleByID(id);
+            return ResponseEntity.ok().body("");
+        } catch (Exception e) {
+            return null;
+        }
     }
+
 }

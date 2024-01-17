@@ -19,7 +19,7 @@ public interface ISampleController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @PostMapping(value="/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity createSample(@RequestBody SampleTO sample);
 
@@ -57,7 +57,7 @@ public interface ISampleController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getAllSamples();
 
-    @ApiOperation(value = "Post form information into database.")
+    @ApiOperation(value = "Get sample information by ID.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Form registered."),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -66,6 +66,6 @@ public interface ISampleController {
     })
     @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity getSampleByID(Integer sampleID);
+    ResponseEntity getSampleByID(@PathVariable Integer id);
 
 }
