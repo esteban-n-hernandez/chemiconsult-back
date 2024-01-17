@@ -1,5 +1,6 @@
 package org.chemiconsult.api.customer.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.chemiconsult.api.customer.impl.ICustomerController;
 import org.chemiconsult.api.customer.service.CustomerService;
 import org.chemiconsult.api.customer.to.CustomerTO;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/customer")
+@Log4j2
 public class CustomerController implements ICustomerController {
 
     @Autowired
@@ -27,6 +29,7 @@ public class CustomerController implements ICustomerController {
             customerService.create(customer);
             return ResponseEntity.ok().body("Customer created");
         } catch (Exception e) {
+            log.error(e.getMessage());
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
     }

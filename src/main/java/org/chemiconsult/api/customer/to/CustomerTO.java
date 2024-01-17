@@ -14,9 +14,9 @@ public class CustomerTO {
 
     private String documentType;
 
-    private Integer documentNumber;
+    private Long documentNumber;
 
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     private String email;
 }

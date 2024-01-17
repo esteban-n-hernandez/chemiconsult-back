@@ -25,9 +25,9 @@ public class CustomerDE  {
     private String documentType;
 
     @Column(name = "DOCUMENT_NUMBER", nullable = false)
-    private Integer documentNumber;
+    private Long documentNumber;
 
     @Column(name = "PHONE_NUMBER")
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
 }
