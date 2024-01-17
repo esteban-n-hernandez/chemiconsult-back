@@ -1,0 +1,29 @@
+package org.chemiconsult.api.sample.de;
+
+import lombok.*;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+public class SampleDE {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "ID_PROCOLO")
+    private int idProtocol;
+
+    @Column(name = "ID_CUSTOMER")
+    private int idCustomer;
+
+    @Column(name = "RECEPTION_DATE")
+    private Date receptionDate;
+}
