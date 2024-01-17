@@ -32,11 +32,11 @@ public class UnitService {
     }
 
 
-    public void delete(UnitTO unitTO) {
+    public void delete(Integer id) throws Exception {
         try {
-            unitRepository.save(UnitMapper.UnitTOToUnitDE(unitTO));
+            unitRepository.deleteById(id);
         } catch (Exception e) {
-
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -45,8 +45,13 @@ public class UnitService {
         return null;
     }
 
-    public UnitTO getUnitByID(Integer documentNumber) {
-        return null;
+    public UnitTO getUnitByID(Integer id) throws Exception {
+        try {
+            return UnitMapper.UnitDEToUnitTO(unitRepository.getById(id));
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
     }
 
 

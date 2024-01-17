@@ -22,7 +22,7 @@ public class UnitController implements IUnitController {
     public ResponseEntity createUnit(UnitTO unit) {
         try {
             unitService.create(unit);
-            return ResponseEntity.ok().body("Unidad guardada");
+            return ResponseEntity.ok("Unidad guardada");
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
@@ -31,41 +31,41 @@ public class UnitController implements IUnitController {
     @Override
     public ResponseEntity deleteUnit(Integer id) {
         try {
-
+            unitService.delete(id);
+            return ResponseEntity.ok("Unidad eliminada");
         } catch (Exception e) {
-
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
-        return null;
     }
 
     @Override
     public ResponseEntity updateUnit(UnitTO unit) {
         try {
-
+            unitService.update(unit);
+            return ResponseEntity.ok("Unidad modificada");
         } catch (Exception e) {
-
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
-        return null;
     }
 
     @Override
     public ResponseEntity getAllUnit() {
         try {
-
+            unitService.getAllCustomers();
+            return ResponseEntity.ok("");
         } catch (Exception e) {
-
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
-        return null;
     }
 
     @Override
     public ResponseEntity getUnit(Integer id) {
         try {
-            return null;
+            UnitTO unitTO = unitService.getUnitByID(id);
+            return ResponseEntity.ok(unitTO);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
-
     }
 
     @Autowired
