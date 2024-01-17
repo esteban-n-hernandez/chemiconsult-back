@@ -40,6 +40,7 @@ public class SampleService {
     }
 
     public SampleTO getSampleByID(Integer sampleID) {
+        sampleRepository.findSampleDetails(sampleID);
         return null;
     }
 }

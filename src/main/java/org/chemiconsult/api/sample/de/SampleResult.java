@@ -8,12 +8,9 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
-@Entity
 public class SampleResult {
 
-    @Id
     private int id;
     private int idProtocol;
     private int idCustomer;
@@ -23,5 +20,17 @@ public class SampleResult {
     private String result;
     private String allowedLimit;
     private String methodology;
+
+    public SampleResult(int id, int idProtocol, int idCustomer, Date receptionDate, String determination, String unit, String result, String allowedLimit, String methodology) {
+        this.id = id;
+        this.idProtocol = idProtocol;
+        this.idCustomer = idCustomer;
+        this.receptionDate = receptionDate;
+        this.determination = determination;
+        this.unit = unit;
+        this.result = result;
+        this.allowedLimit = allowedLimit;
+        this.methodology = methodology;
+    }
 
 }
