@@ -3,9 +3,11 @@ package org.chemiconsult.api.customer.mapper;
 import org.chemiconsult.api.customer.de.CustomerDE;
 import org.chemiconsult.api.customer.to.CustomerTO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CustomerMapper {
 
@@ -38,8 +40,21 @@ public class CustomerMapper {
 
 
     public static List<CustomerTO> CustomerDEListToCustomerToList(List<CustomerDE> customerDE) {
+        if (!customerDE.isEmpty()) {
+            List<CustomerTO> customerTO = new ArrayList<>();
+            for (CustomerDE de : customerDE) {
+                CustomerTO to = new CustomerTO();
+                to.setDocumentNumber(de.getDocumentNumber());
+                to.setDocumentType(de.getDocumentType());
+                to.setEmail(de.getEmail());
+                to.setName(de.getName());
+                to.setPhoneNumber(de.getPhoneNumber());
 
-        return null;
+                customerTO.add(to);
+            }
+            return customerTO;
+        } else {
+            return null;
+        }
     }
-
 }

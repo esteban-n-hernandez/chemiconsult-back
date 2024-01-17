@@ -24,7 +24,7 @@ public interface IUnitController {
     ResponseEntity createUnit(@RequestBody UnitTO unit);
 
 
-    @ApiOperation(value = "Post form information into database.")
+    @ApiOperation(value = "Delete an unit from database.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Form registered."),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -35,7 +35,7 @@ public interface IUnitController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity deleteUnit(@PathVariable Integer id);
 
-    @ApiOperation(value = "Post form information into database.")
+    @ApiOperation(value = "Update an unit from database.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Form registered."),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -46,7 +46,7 @@ public interface IUnitController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity updateUnit(UnitTO unit);
 
-    @ApiOperation(value = "Post form information into database.")
+    @ApiOperation(value = "Get all units from database.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Form registered."),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -57,7 +57,7 @@ public interface IUnitController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getAllUnit();
 
-    @ApiOperation(value = "Post form information into database.")
+    @ApiOperation(value = "Get an unit from database.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Form registered."),
             @ApiResponse(code = 400, message = "Bad Request"),
