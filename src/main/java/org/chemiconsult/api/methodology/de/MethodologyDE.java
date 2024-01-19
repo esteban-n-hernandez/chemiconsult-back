@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "METHODOLOGY")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "SAMPLE_DETAIL")
 public class SampleDetailsDE {
 
     @Id
