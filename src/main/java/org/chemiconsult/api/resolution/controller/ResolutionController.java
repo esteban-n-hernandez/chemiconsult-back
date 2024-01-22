@@ -4,11 +4,16 @@ import org.chemiconsult.api.resolution.impl.IResolutionController;
 import org.chemiconsult.api.resolution.service.ResolutionService;
 import org.chemiconsult.api.resolution.to.ResolutionTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/resolution")
 public class ResolutionController implements IResolutionController {
@@ -16,12 +21,12 @@ public class ResolutionController implements IResolutionController {
     ResolutionService resolutionService;
 
     @Override
-    public ResponseEntity createResolution(ResolutionTO unit) {
+    public ResponseEntity createResolution(List<ResolutionTO> resolutionList) {
         try {
-            resolutionService.create(unit);
-            return ResponseEntity.ok("Resolucion guardada");
+            resolutionService.create(resolutionList);
+            return ResponseEntity.ok().body("RESOLUCION ALMACENADA");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
         }
     }
 
@@ -48,8 +53,8 @@ public class ResolutionController implements IResolutionController {
     @Override
     public ResponseEntity getAllResolutions() {
         try {
-            resolutionService.getAllResolutions();
-            return ResponseEntity.ok("");
+            List<ResolutionTO> resolutionList = resolutionService.getAllResolutions();
+            return ResponseEntity.ok(resolutionList);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
@@ -60,6 +65,15 @@ public class ResolutionController implements IResolutionController {
         try {
             ResolutionTO resolutionTO = resolutionService.getResolution(id);
             return ResponseEntity.ok(resolutionTO);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+        }
+    }
+
+    public ResponseEntity getResolutionByName(String name) {
+        try {
+            List<ResolutionTO> resolutionList = resolutionService.getResolutionByName(name);
+            return ResponseEntity.ok(resolutionList);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }

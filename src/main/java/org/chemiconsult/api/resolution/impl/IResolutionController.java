@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public interface IResolutionController {
@@ -21,7 +23,7 @@ public interface IResolutionController {
     })
     @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity createResolution(@RequestBody ResolutionTO unit);
+    ResponseEntity createResolution(@RequestBody List<ResolutionTO> resolutionList);
 
 
     @ApiOperation(value = "Delete a resolution from database.")
@@ -53,7 +55,7 @@ public interface IResolutionController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @GetMapping(value = "/get-units", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get-resolutions", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getAllResolutions();
 
@@ -64,8 +66,21 @@ public interface IResolutionController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/id/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getResolution(@PathVariable Integer id);
+
+
+    @ApiOperation(value = "Get a resolution from database.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Resolution registered."),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Authentication Error"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+    @GetMapping(value = "/name/{name}", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity getResolutionByName(@PathVariable String name);
+
 
 }

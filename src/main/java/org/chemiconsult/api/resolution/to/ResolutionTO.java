@@ -2,6 +2,7 @@ package org.chemiconsult.api.resolution.to;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -11,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ResolutionTO {
 
-    @JsonIgnore
+    @JsonProperty(required = false)
     private Integer id;
 
     private String unit;
