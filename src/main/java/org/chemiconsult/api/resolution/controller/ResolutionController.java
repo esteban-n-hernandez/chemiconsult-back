@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @CrossOrigin(origins = "*")
@@ -21,32 +23,42 @@ public class ResolutionController implements IResolutionController {
     ResolutionService resolutionService;
 
     @Override
-    public ResponseEntity createResolution(List<ResolutionTO> resolutionList) {
+    public ResponseEntity<Map<String, String>> createResolution(List<ResolutionTO> resolutionList) {
+        Map<String, String> response = new HashMap<>();
         try {
             resolutionService.create(resolutionList);
-            return ResponseEntity.ok().body("RESOLUCION ALMACENADA");
+            response.put("message", "Resolución almacenada.");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
+            response.put("error", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
+
     @Override
-    public ResponseEntity deleteResolution(Integer id) {
+    public ResponseEntity<Map<String, String>> deleteResolution(Integer id) {
+        Map<String, String> response = new HashMap<>();
         try {
             resolutionService.delete(id);
-            return ResponseEntity.ok("Resolucion eliminada");
+            response.put("message", "Resolución almacenada.");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+            response.put("error", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @Override
-    public ResponseEntity updateResolution(ResolutionTO resolution) {
+    public ResponseEntity<Map<String, String>> updateResolution(ResolutionTO resolution) {
+        Map<String, String> response = new HashMap<>();
         try {
             resolutionService.update(resolution);
-            return ResponseEntity.ok("Resolucion modificada");
+            response.put("message", "Resolución modificada.");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+            response.put("error", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 

@@ -46,7 +46,7 @@ public interface IResolutionController {
     })
     @PutMapping(value = "/update", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity updateResolution(ResolutionTO unit);
+    ResponseEntity updateResolution(ResolutionTO resolution);
 
     @ApiOperation(value = "Get all resolutions from database.")
     @ApiResponses(value = {
