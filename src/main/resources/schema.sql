@@ -27,7 +27,12 @@ CREATE TABLE SAMPLE (
                                  ID INT PRIMARY KEY AUTO_INCREMENT,
                                  ID_PROCOLO INT,
                                  ID_CUSTOMER INT,
-                                 TYPE VARCHAR(255),
-                                 SAMPLE VARCHAR(255),
+                                 TYPE VARCHAR(50),
+                                 SAMPLE VARCHAR(50),
                                  RECEPTION_DATE DATE
+);
+
+CREATE TABLE METHODOLOGY (
+                                 ID INT PRIMARY KEY,
+                                 TYPE VARCHAR(70) NOT NULL
 );
