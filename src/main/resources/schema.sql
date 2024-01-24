@@ -16,3 +16,18 @@ CREATE TABLE RESOLUTION (
     UNIT VARCHAR(50) NOT NULL,
     LIMITE VARCHAR(50) NOT NULL
 );
+
+CREATE TABLE UNIT (
+                      ID INT PRIMARY KEY AUTO_INCREMENT,
+                      UNIT VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE SAMPLE (
+                                 ID INT PRIMARY KEY AUTO_INCREMENT,
+                                 ID_PROCOLO INT,
+                                 ID_CUSTOMER INT,
+                                 TYPE VARCHAR(255),
+                                 SAMPLE VARCHAR(255),
+                                 RECEPTION_DATE DATE
+);
