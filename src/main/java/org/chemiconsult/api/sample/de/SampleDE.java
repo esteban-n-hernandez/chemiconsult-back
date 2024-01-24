@@ -18,7 +18,7 @@ public class SampleDE {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "ID_PROCOLO")
+    @Column(name = "ID_PROTOCOL")
     private int idProtocol;
 
     @Column(name = "ID_CUSTOMER")

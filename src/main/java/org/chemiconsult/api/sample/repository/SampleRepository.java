@@ -11,7 +11,7 @@ import java.util.List;
 public interface SampleRepository extends JpaRepository<SampleDE, Integer> {
 
 
-    @Query("SELECT new org.chemiconsult.api.sample.de.SampleResult (s.id, s.idProtocol, s.idCustomer, s.receptionDate, " +
+    @Query("SELECT new org.chemiconsult.api.sample.de.SampleResult (s.id, s.idProtocol, s.idCustomer, s.type, s.sample, s.receptionDate,  " +
             "d.determination, d.unit, d.result, d.allowedLimit, d.methodology) " +
             "FROM SAMPLE s INNER JOIN SAMPLE_DETAIL d ON s.idProtocol = d.idProtocol WHERE s.idProtocol = :idProtocol")
     List<SampleResult> findSampleDetails(@Param("idProtocol") int idProtocol);
