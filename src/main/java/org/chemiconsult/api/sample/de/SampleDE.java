@@ -24,6 +24,12 @@ public class SampleDE {
     @Column(name = "ID_CUSTOMER")
     private int idCustomer;
 
+    @Column(name = "TYPE")
+    private String type;
+
+    @Column(name = "SAMPLE")
+    private String sample;
+
     @Column(name = "RECEPTION_DATE")
     private Date receptionDate;
 }
