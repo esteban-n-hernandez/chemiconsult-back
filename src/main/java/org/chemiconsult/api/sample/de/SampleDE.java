@@ -31,5 +31,5 @@ public class SampleDE {
     private String sample;
 
     @Column(name = "RECEPTION_DATE")
-    private Date receptionDate;
+    private LocalDate receptionDate;
 }

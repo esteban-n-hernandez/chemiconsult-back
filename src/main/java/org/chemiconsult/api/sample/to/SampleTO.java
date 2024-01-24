@@ -19,6 +19,10 @@ public class SampleTO {
 
     private LocalDate receptionDate;
 
+    private String type;
+
+    private String sample;
+
     private List<SampleDetailsTO> sampleDetails;
 
 }
