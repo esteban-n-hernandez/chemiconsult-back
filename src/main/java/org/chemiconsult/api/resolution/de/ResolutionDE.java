@@ -25,7 +25,7 @@ public class ResolutionDE {
     @Column(name = "UNIT", nullable = false)
     private String unit;
 
-    @Column(name = "LIMIT", nullable = false)
+    @Column(name = "LIMIT_COLUMN", nullable = false)
     private String limit;
 
 }
