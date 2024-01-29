@@ -3,6 +3,7 @@ package org.chemiconsult.api.sample.de;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
@@ -11,14 +12,15 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity(name = "SAMPLE_DETAIL")
-public class SampleDetailsDE {
+public class SampleDetailsDE implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "ID_PROTOCOL")
-    private int idProtocol;
+    @ManyToOne
+    @JoinColumn(name = "ID_PROTOCOL", referencedColumnName = "ID_PROTOCOL")
+    private SampleDE sampleDE;
 
     @Column(name = "DETERMINATION")
     private String determination;

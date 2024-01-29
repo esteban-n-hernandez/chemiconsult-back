@@ -1,6 +1,7 @@
 package org.chemiconsult.api.sample.to;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class SampleTO {
 
     private Integer idCustomer;
 
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private LocalDate receptionDate;
 
     private String type;
