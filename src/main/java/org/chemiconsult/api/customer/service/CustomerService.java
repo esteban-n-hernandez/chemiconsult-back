@@ -12,7 +12,6 @@ import java.util.NoSuchElementException;
 @Service
 public class CustomerService {
 
-    @Autowired
     CustomerRepository customerRepository;
 
     public void create(CustomerTO customerTO) {
@@ -39,4 +38,15 @@ public class CustomerService {
         return CustomerMapper.CustomerDEToCUstomerTO(
                 customerRepository.findById(documentNumber));
     }
+
+    public List<CustomerTO> getCustomerByName(String name) {
+        return CustomerMapper.CustomerDEListToCUstomerTOList(
+                customerRepository.findByName(name));
+    }
+
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
 }
