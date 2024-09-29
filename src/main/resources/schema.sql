@@ -1,9 +1,45 @@
-CREATE TABLE customer_de (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS customer (
+                                        id INT AUTO_INCREMENT PRIMARY KEY,
+                                        name VARCHAR(255) NOT NULL,
     email VARCHAR(255),
-    document_type VARCHAR(255) NOT NULL,
-    document_number INT NOT NULL,
-    phone_number INT,
-    UNIQUE KEY unique_document (document_type, document_number)
+    document_type VARCHAR(50) NOT NULL,
+    document_number BIGINT NOT NULL,
+    phone_number BIGINT
+    );
+
+
+CREATE TABLE methodology_de (
+                                id INT AUTO_INCREMENT PRIMARY KEY,
+                                type VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE resolution (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            nombre_resolucion VARCHAR(255) NOT NULL,
+                            parametro VARCHAR(255) NOT NULL,
+                            unit VARCHAR(50) NOT NULL,
+                            limite VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE sample (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        id_procolo INT,
+                        id_customer INT,
+                        reception_date DATE
+);
+
+CREATE TABLE sample_detail (
+                               id INT AUTO_INCREMENT PRIMARY KEY,
+                               id_protocol INT,
+                               determination VARCHAR(255),
+                               unit VARCHAR(50),
+                               result VARCHAR(255),
+                               allowed_limit VARCHAR(255),
+                               methodology VARCHAR(255)
+);
+
+CREATE TABLE unit (
+                      id INT AUTO_INCREMENT PRIMARY KEY,
+                      unit VARCHAR(50) NOT NULL
+);
+
