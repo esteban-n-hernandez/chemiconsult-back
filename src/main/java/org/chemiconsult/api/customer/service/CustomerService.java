@@ -34,9 +34,9 @@ public class CustomerService {
         }
     }
 
-    public CustomerTO getCustomer(Integer documentNumber) {
+    public CustomerTO getCustomer(Long documentNumber) {
         return CustomerMapper.CustomerDEToCUstomerTO(
-                customerRepository.findById(documentNumber));
+                customerRepository.findByDocumentNumber(documentNumber));
     }
 
     public List<CustomerTO> getCustomerByName(String name) {

@@ -69,15 +69,19 @@ public class CustomerController implements ICustomerController {
     }
 
     @Override
-    public ResponseEntity getCustomer(Integer documentNumber) {
+    public ResponseEntity getCustomer(Long documentNumber) {
+        log.info("Entering getCustomer method. " + documentNumber);
         try {
             CustomerTO customer = customerService.getCustomer(documentNumber);
             if (customer != null) {
+                log.info("Customer found. " + customer);
                 return ResponseEntity.ok().body(customer);
             } else {
+                log.info("Customer not found. " + documentNumber);
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
+            log.error("Error getCustomer method. " + e.getMessage());
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
     }

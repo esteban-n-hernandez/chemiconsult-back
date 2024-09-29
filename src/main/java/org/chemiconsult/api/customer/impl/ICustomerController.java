@@ -67,9 +67,10 @@ public interface ICustomerController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
+
     @GetMapping(value = "/{documentNumber}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity getCustomer(Integer documentNumber);
+    ResponseEntity getCustomer(@PathVariable Long documentNumber);
 
 
     @ApiOperation(value = "Post form information into database.")
