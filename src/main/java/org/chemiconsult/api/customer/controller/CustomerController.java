@@ -81,4 +81,18 @@ public class CustomerController implements ICustomerController {
             return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
         }
     }
+
+    @Override
+    public ResponseEntity getCustomerByName(String name) {
+        try {
+            List<CustomerTO> customer = customerService.getCustomerByName(name);
+            if (customer != null) {
+                return ResponseEntity.ok().body(customer);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Internal Server Error: " + e.getMessage());
+        }
+    }
 }

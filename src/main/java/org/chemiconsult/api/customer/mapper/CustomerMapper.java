@@ -38,6 +38,27 @@ public class CustomerMapper {
         }
     }
 
+    public static List<CustomerTO> CustomerDEListToCUstomerTOList(Optional<List<CustomerDE>> customerDEList) {
+        List<CustomerTO> customerTOList;
+        if (customerDEList.isPresent()) {
+            List<CustomerDE> customer = customerDEList.get();
+            customerTOList = new ArrayList<>();
+
+            for (CustomerDE customerDE : customer) {
+                customerTOList.add(CustomerTO.builder()
+                        .documentNumber(customerDE.getDocumentNumber())
+                        .documentType(customerDE.getDocumentType())
+                        .email(customerDE.getEmail())
+                        .name(customerDE.getName())
+                        .phoneNumber(customerDE.getPhoneNumber())
+                        .build());
+            }
+            return customerTOList;
+        } else {
+            return null;
+        }
+    }
+
 
     public static List<CustomerTO> CustomerDEListToCustomerToList(List<CustomerDE> customerDE) {
         if (!customerDE.isEmpty()) {

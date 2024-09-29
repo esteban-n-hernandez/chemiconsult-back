@@ -16,16 +16,16 @@ public class ResolutionDE {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "NOMBRE_RESOLUCION", nullable = false)
+    @Column(name = "RESOLUTION_NAME", nullable = false)
     private String resolutionName;
 
-    @Column(name = "PARAMETRO", nullable = false)
+    @Column(name = "PARAMETER", nullable = false)
     private String parameter;
 
     @Column(name = "UNIT", nullable = false)
     private String unit;
 
-    @Column(name = "LIMITE", nullable = false)
+    @Column(name = "LIMIT_COLUMN", nullable = false)
     private String limit;
 
 }

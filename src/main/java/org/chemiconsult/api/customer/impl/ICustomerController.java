@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.chemiconsult.api.customer.to.CustomerTO;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -70,4 +71,15 @@ public interface ICustomerController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getCustomer(Integer documentNumber);
 
+
+    @ApiOperation(value = "Post form information into database.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Form registered."),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Authentication Error"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity getCustomerByName(@Param("name") String name);
 }
