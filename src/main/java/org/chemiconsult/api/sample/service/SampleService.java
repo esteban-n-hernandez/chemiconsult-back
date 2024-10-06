@@ -11,6 +11,7 @@ import org.chemiconsult.api.sample.to.SampleTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,12 +39,11 @@ public class SampleService {
                 sampleDE.getSampleDetailsList().add(sampleDetailsDE);
             }
 
-            // Guarda la entidad principal junto con las entidades secundarias
             sampleRepository.save(sampleDE);
             log.info("MUESTRA INSERTADA");
         } catch (Exception e) {
             log.error(e.getMessage());
-            throw new Exception(e.getCause());
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -63,7 +63,6 @@ public class SampleService {
     }
 
     private SampleTO convertToSampleTO(SampleDE sampleDE) {
-        // Puedes llamar a SampleMapper.SampleDEToSampleTO directamente si prefieres.
         return SampleMapper.SampleDEToSampleTO(sampleDE, sampleRepository.findSampleDetails(sampleDE.getIdProtocol()));
     }
 
@@ -73,5 +72,9 @@ public class SampleService {
 
     public SampleTO getSampleByID(Integer id) {
         return SampleMapper.SampleTO(sampleRepository.findByIdProtocol(id));
+    }
+
+    public List<SampleTO> getSampleByIDCustomer(Integer id) {
+        return SampleMapper.sampleDEListToSampleTOList(sampleRepository.findAllByIdCustomer(id));
     }
 }

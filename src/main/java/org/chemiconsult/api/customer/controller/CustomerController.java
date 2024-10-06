@@ -22,7 +22,6 @@ public class CustomerController implements ICustomerController {
     @Autowired
     CustomerService customerService;
 
-
     @Override
     public ResponseEntity createCustomer(CustomerTO customer) {
         try {

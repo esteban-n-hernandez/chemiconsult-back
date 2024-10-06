@@ -95,4 +95,18 @@ public class SampleMapper {
                 .build()).orElse(null);
     }
 
+    public static List<SampleTO> sampleDEListToSampleTOList(Optional<List<SampleDE>> sampleList) {
+        return sampleList
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(sample -> SampleTO.builder()
+                        .sample(sample.getSample())
+                        .receptionDate(sample.getReceptionDate())
+                        .idCustomer(sample.getIdCustomer())
+                        .idProtocol(sample.getIdProtocol())
+                        .type(sample.getType())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
 }

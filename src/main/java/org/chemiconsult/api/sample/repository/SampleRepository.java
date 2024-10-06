@@ -24,7 +24,7 @@ public interface SampleRepository extends JpaRepository<SampleDE, Integer> {
     @Query(value = "SELECT * FROM  Sample LIMIT 20", nativeQuery = true)
     List<SampleDE> findAll();
 
-
     Optional<SampleDE> findByIdProtocol(Integer idProtocol);
 
+    Optional<List<SampleDE>> findAllByIdCustomer(Integer integer);
 }

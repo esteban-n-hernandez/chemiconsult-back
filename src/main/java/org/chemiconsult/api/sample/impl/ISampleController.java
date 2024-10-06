@@ -79,4 +79,16 @@ public interface ISampleController {
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity getSampleDetailsByID(@PathVariable Integer id) throws Exception;
 
+
+    @ApiOperation(value = "Get sample information by ID.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Form registered."),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Authentication Error"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+    @GetMapping(value = "/detail/customer/{customerID}", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    ResponseEntity getSampleByCustomerID(@PathVariable Integer customerID) throws Exception;
+
 }

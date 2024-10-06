@@ -15,15 +15,15 @@ CREATE TABLE methodology_de (
 
 CREATE TABLE resolution (
                             id INT AUTO_INCREMENT PRIMARY KEY,
-                            nombre_resolucion VARCHAR(255) NOT NULL,
-                            parametro VARCHAR(255) NOT NULL,
+                            resolution_name VARCHAR(255) NOT NULL,
+                            parameter VARCHAR(255) NOT NULL,
                             unit VARCHAR(50) NOT NULL,
-                            limite VARCHAR(50) NOT NULL
+                           limit_column  VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE sample (
                         id INT AUTO_INCREMENT PRIMARY KEY,
-                        id_procolo INT,
+                        id_protocol INT,
                         id_customer INT,
                         reception_date DATE
 );

@@ -13,4 +13,5 @@ public interface SampleDetailsRepository extends JpaRepository<SampleDetailsDE, 
 
     @Query("SELECT sd FROM SAMPLE_DETAIL sd WHERE sd.sampleDE.idProtocol = :idProtocol")
     Optional<List<SampleDetailsDE>> findByProtocolId(@Param("idProtocol") int idProtocol);
+
 }

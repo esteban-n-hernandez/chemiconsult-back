@@ -72,4 +72,13 @@ public class SampleController implements ISampleController {
         }
     }
 
+    public ResponseEntity getSampleByCustomerID(Integer customerID) throws Exception {
+        try {
+            List<SampleTO> samples = sampleService.getSampleByIDCustomer(customerID);
+            return ResponseEntity.ok().body(samples);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            throw new Exception(e.getMessage());
+        }
+    }
 }

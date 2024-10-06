@@ -7,15 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class CustomerService {
 
     CustomerRepository customerRepository;
 
-    public void create(CustomerTO customerTO) {
-        customerRepository.save(CustomerMapper.CustomerTOToCUstomerDE(customerTO));
+    public void create(CustomerTO customerTO) throws Exception {
+        try {
+            customerRepository.save(CustomerMapper.CustomerTOToCUstomerDE(customerTO));
+        } catch (Exception e) {
+            throw new Exception("An exception happened when saving Customer" + e.getMessage());
+        }
+
     }
 
     public void update(CustomerTO customerTO) {
