@@ -7,6 +7,7 @@ import org.chemiconsult.api.customer.to.CustomerTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class CustomerController implements ICustomerController {
     CustomerService customerService;
 
     @Override
-    public ResponseEntity createCustomer(CustomerTO customer) {
+    public ResponseEntity createCustomer(@RequestBody CustomerTO customer) {
         try {
             customerService.create(customer);
             return ResponseEntity.ok().body("Customer created");

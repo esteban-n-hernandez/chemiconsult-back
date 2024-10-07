@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class CustomerMapper {
 
     public static CustomerDE CustomerTOToCUstomerDE(CustomerTO customerTo) {
-
         return CustomerDE.builder()
                 .documentNumber(customerTo.getDocumentNumber())
                 .documentType(customerTo.getDocumentType())
