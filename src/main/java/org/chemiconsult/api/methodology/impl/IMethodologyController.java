@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.chemiconsult.api.methodology.to.MethodologyTO;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public interface IMethodologyController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @PostMapping(value = "/create", produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     ResponseEntity createMethodology(MethodologyTO methodology);
 
@@ -32,20 +33,9 @@ public interface IMethodologyController {
             @ApiResponse(code = 401, message = "Authentication Error"),
             @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    @DeleteMapping(value = "/delete", produces = APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/delete/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity deleteMethodology(MethodologyTO methodology);
-
-    @ApiOperation(value = "Update a methodology.")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Form registered."),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 401, message = "Authentication Error"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
-    @PutMapping(value = "/update", produces = APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    ResponseEntity updateMethodology(MethodologyTO methodology);
+    ResponseEntity deleteMethodology(@PathVariable Integer id);
 
     @ApiOperation(value = "Get all methodologys stored in DB.")
     @ApiResponses(value = {
@@ -56,7 +46,7 @@ public interface IMethodologyController {
     })
     @GetMapping(value = "/get-methodologys", produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity getAllMethodologys();
+    ResponseEntity getAllMethodologys() throws Exception;
 
     @ApiOperation(value = "Get a methodology by ID.")
     @ApiResponses(value = {

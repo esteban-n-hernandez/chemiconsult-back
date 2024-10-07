@@ -8,4 +8,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class MethodologyTO {
+
+    private int id;
+
+    private String type;
+
 }

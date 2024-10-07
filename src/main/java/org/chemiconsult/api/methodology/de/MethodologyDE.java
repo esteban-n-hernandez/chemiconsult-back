@@ -3,9 +3,7 @@ package org.chemiconsult.api.methodology.de;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,6 +14,7 @@ import javax.persistence.Id;
 public class MethodologyDE  {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "TYPE", nullable = false)

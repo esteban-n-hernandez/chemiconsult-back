@@ -7,21 +7,21 @@ VALUES ('Maria Gomez', 'maria.gomez@mail.com', 'DNI', 87654321, 5491166666666);
 INSERT INTO customer (name, email, document_type, document_number, phone_number)
 VALUES ('Carlos Lopez', 'carlos.lopez@mail.com', 'DNI', 987654321, 543484333344);
 
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Análisis de sólidos totales en agua');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Determinación de pH en muestras de barro');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Medición de conductividad eléctrica en agua');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Análisis de metales pesados en agua');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Determinación de sulfatos en barro');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Análisis microbiológico de muestras de agua');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Determinación de materia orgánica en suelo');
-INSERT INTO methodology_de (type)
+INSERT INTO methodology (type)
 VALUES ('Análisis de nitratos en agua');
 
 INSERT INTO resolution (resolution_name, parameter, unit, limit_column)
